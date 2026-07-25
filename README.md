@@ -1,200 +1,94 @@
-# JARVIS Chess - Tier 1: CLI Foundation
+﻿# JARVIS Chess
 
-Agent 17 vs Stockfish in the terminal.
+Play chess against Stockfish on your computer. Analyze games, replay your chess.com matches, solve daily puzzles.
 
-## Overview
+## Download & Install
 
-This is **Tier 1** of the JARVIS Chess 7-tier progression project. The CLI enables:
+**System Requirements:**
+- Windows 10 or later (64-bit)
+- 500 MB free disk space
+- Internet connection (for chess.com import)
 
-- Interactive chess gameplay in the terminal
-- Stockfish engine integration (3350+ ELO)
-- Real-time move validation & legal move enforcement
-- Check/checkmate/stalemate detection
-- ASCII board visualization with Unicode pieces
-- Full move history in algebraic notation
-- <500ms response time per move
+**Installation (1 minute):**
 
-## Requirements
+1. [Download JARVIS-Chess v2.0.0](https://github.com/AGENT17-tech/JARVIS-Chess/releases/download/v2.0.0/JARVIS-Chess-Setup.exe)
+2. Double-click JARVIS-Chess-Setup.exe
+3. Click "Install" in the window that appears
+4. Wait for installation to complete (~30 seconds)
+5. Click "Play" or launch from Start Menu
 
-- Python 3.10+
-- Stockfish binary (installed locally)
+That's it. No setup, no configuration.
 
-## Installation
+---
 
-### 1. Clone Repository
+## Features
 
-```bash
-git clone https://github.com/AGENT17-tech/JARVIS-Chess.git
-cd JARVIS-Chess
-git checkout tier-1-cli
-```
+✓ **Play vs Stockfish** — Adjustable difficulty (depth 1-20)
+✓ **Replay Games** — Import your chess.com games, watch move-by-move
+✓ **Daily Puzzles** — Practice with Lichess puzzles
+✓ **Drag & Drop** — Move pieces naturally
+✓ **Move Analysis** — See engine evaluation, opening names, mistakes
+✓ **Dark Mode** — Easy on the eyes
+✓ **Keyboard Shortcuts** — Ctrl+N (new), Ctrl+I (import), Ctrl+H (history), ? (help)
 
-### 2. Install Python Dependencies
+---
 
-```bash
-pip install -r requirements.txt
-```
+## Playing Your First Game
 
-### 3. Install Stockfish
+1. **New Game** → Choose difficulty (1-20)
+2. **Click squares** or **drag pieces** to move
+3. **JARVIS responds** immediately
+4. **Game auto-saves** when you win/lose/quit
 
-**Linux (Ubuntu/Debian):**
-```bash
-sudo apt-get install stockfish
-```
+**Game Difficulty:**
+- **1-5**: Very easy (learn the basics)
+- **6-15**: Medium (competitive)
+- **16-20**: Expert (you need to be very good)
 
-**macOS:**
-```bash
-brew install stockfish
-```
+---
 
-**Windows:**
-Download from [stockfishchess.org](https://stockfishchess.org/download/) and add to PATH.
+## Keyboard Shortcuts
 
-**Verify installation:**
-```bash
-stockfish --version
-```
+| Shortcut | Action |
+|----------|--------|
+| Ctrl+N | New game |
+| Ctrl+I | Import chess.com game |
+| Ctrl+H | Game history |
+| Ctrl+P | Puzzle mode |
+| ← / → | Navigate previous/next move (in replay) |
+| ? | Help |
+| Esc | Close menu |
 
-## Usage
+---
 
-### Start a Game
+## Importing Your Chess.com Games
 
-```bash
-python main.py
-```
+1. Open JARVIS Chess
+2. Click **Import** → Enter chess.com username
+3. Your recent games load automatically
+4. Click any game to replay, analyze, or study
 
-### Game Commands
-
-```
-move <uci>  - Make a move in UCI format (e.g., 'move e2e4')
-status      - Show current board state & position info
-undo        - Undo last move (Agent 17 + JARVIS)
-help        - Show all commands
-quit        - Exit game
-```
-
-### Move Notation
-
-Moves are entered in **UCI format** (Universal Chess Interface):
-- `e2e4` - Pawn from e2 to e4
-- `g1f3` - Knight from g1 to f3
-- `e7e8q` - Pawn promotion to queen (append piece letter)
-
-Example game sequence:
-```
-> move e2e4
-✓ Move accepted: e4
-[JARVIS MOVE] Thinking... Done (0.23s)
-✓ JARVIS plays: c7c5
-```
-
-## Project Structure
-
-```
-JARVIS-Chess/
-├── main.py           # Main game loop & CLI
-├── game.py           # Game state & move validation
-├── engine.py         # Stockfish wrapper
-├── board.py          # Board visualization
-├── requirements.txt  # Dependencies
-├── jarvis_chess.log  # Game log (auto-created)
-└── README.md         # This file
-```
-
-## Architecture
-
-### `game.py` - Game Logic
-- Board state management via `python-chess`
-- Move validation & legality checking
-- Game status (check/checkmate/stalemate/draw)
-- Move history tracking
-
-### `engine.py` - Stockfish Wrapper
-- Skill level configuration (0-20)
-- Best move calculation with evaluation
-- Check/checkmate detection
-- Position analysis
-
-### `board.py` - Visualization
-- ASCII board with Unicode pieces (♔ ♕ ♖ ♗ ♘ ♙)
-- Move history in algebraic notation
-- Legal move highlighting (for Tier 2+)
-
-### `main.py` - CLI Interface
-- Interactive game loop
-- User input handling
-- JARVIS move calculation & execution
-- Game statistics & logging
-
-## Tier 1 Exit Criteria
-
-- [ ] CLI playable end-to-end
-- [ ] Complete game vs Stockfish without errors
-- [ ] 3+ consecutive games won/played
-- [ ] <500ms move response time
-- [ ] All commands functional (move, status, undo, quit)
-- [ ] Game log saved to `jarvis_chess.log`
-- [ ] Repo pushed to `tier-1-cli` branch
-
-## Configuration
-
-Edit `main.py` line ~174 to change difficulty:
-
-```python
-difficulty = 20  # Range: 0-20 (0=weakest, 20=strongest)
-```
-
-## Logging
-
-All games are logged to `jarvis_chess.log`:
-- Move timestamps
-- Legal/illegal move attempts
-- Engine calculations
-- Game outcomes
-
-```bash
-tail -f jarvis_chess.log
-```
+---
 
 ## Troubleshooting
 
-### "Stockfish not found"
-Ensure Stockfish is installed and in your PATH:
-```bash
-which stockfish
-```
+**App won't start?**
+- Restart your computer
+- Download Stockfish: https://stockfishchess.org/download/ → Extract to C:\stockfish\
+- Restart app
 
-### "python-chess import error"
-Reinstall dependencies:
-```bash
-pip install --upgrade -r requirements.txt
-```
+**Pieces won't drag?**
+- Use keyboard: Arrow keys to move, Enter to confirm
+- Or click source square, click destination square
 
-### Slow move calculation
-- Reduce `depth` in `engine.py` line ~18 (default: 20)
-- Reduce `Threads` in `engine.py` line ~24 (default: 4)
-- Check CPU usage (other processes?)
+**Game stutters or is slow?**
+- Lower difficulty (1-10 instead of 20)
+- Close other apps
 
-### Invalid move format errors
-Use **UCI format** only:
-- ✓ Correct: `move e2e4`
-- ✗ Wrong: `move pawn to e4`
-- ✗ Wrong: `e2-e4`
+---
 
-## Next Steps (Tier 2)
+## GitHub
 
-After Tier 1 is stable:
-1. Merge `tier-1-cli` → `main`
-2. Create `tier-2-ui` branch
-3. Build Electron/React UI for drag-drop board interface
-4. Integrate FastAPI backend for Tier 2+ compatibility
+GitHub: https://github.com/AGENT17-tech/JARVIS-Chess
 
-## License
-
-Agent 17 / AGENT17-tech
-
-## References
-
-- [python-chess](https://python-chess.readthedocs.io/)
-- [Stockfish](https://stockfishchess.org/)
-- [UCI Protocol](http://wbec-ridderkerk.nl/html/UCIProtocol.html)
+v2.0.0 — July 2026

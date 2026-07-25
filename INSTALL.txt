@@ -1,0 +1,58 @@
+﻿JARVIS CHESS - INSTALLATION GUIDE
+==================================
+
+What you're installing:
+A desktop chess game where you play against the computer.
+
+System Requirements:
+- Windows 10 or Windows 11 (64-bit)
+- 500 MB free disk space
+- Internet connection (optional, for chess.com import)
+
+Installation Steps:
+===================
+
+1. Download
+   - Go to: https://github.com/AGENT17-tech/JARVIS-Chess/releases
+   - Click "v2.0.0" release
+   - Download: JARVIS-Chess-Setup.exe
+
+2. Install
+   - Find JARVIS-Chess-Setup.exe in your Downloads folder
+   - Double-click it
+   - Windows will ask: "Do you want to run this file?" → Click "Yes"
+   - An installer window appears
+   - Click the "Install" button
+   - Wait 30 seconds for installation to complete
+
+3. Launch
+   - Click "Play" in the installer window
+   - OR: Look for "JARVIS Chess" in your Start Menu
+   - Click to launch
+
+4. Play
+   - Click "New Game"
+   - Choose difficulty (1-20)
+   - Click or drag pieces to move
+   - JARVIS plays automatically
+
+That's it! Enjoy.
+
+Troubleshooting:
+================
+
+Q: I get a "Windows protected your PC" message
+A: Click "More info" → "Run anyway"
+   (This is normal for new apps)
+
+Q: The app won't start after installation
+A: 1. Restart your computer
+   2. Try running again
+
+Q: Can I uninstall it?
+A: Yes - Settings → Apps → Apps & features → JARVIS Chess → Uninstall
+
+Questions?
+==========
+GitHub: https://github.com/AGENT17-tech/JARVIS-Chess
+Report bugs: https://github.com/AGENT17-tech/JARVIS-Chess/issues
