@@ -1,0 +1,18 @@
+[2026-07-25 00:54:31,802] game: New game initialized
+[2026-07-25 00:54:31,818] engine: Failed to initialize Stockfish: Stockfish.__init__() got an unexpected keyword argument 'skill_level'
+[2026-07-25 00:54:31,818] engine: Solution: pip install --upgrade stockfish
+[2026-07-25 00:58:49,432] game: New game initialized
+[2026-07-25 00:58:49,452] engine: Failed to initialize Stockfish: [WinError 2] The system cannot find the file specified
+[2026-07-25 00:58:49,452] engine: Try: pip install --upgrade stockfish
+[2026-07-25 07:09:15,677] game: New game initialized
+[2026-07-25 07:09:16,638] engine: Stockfish initialized from: C:\stockfish\stockfish.exe
+[2026-07-25 07:09:16,687] engine: Engine configured | Skill: 20 | Depth: 20
+[2026-07-25 07:09:16,687] __main__: JARVIS Chess initialized | Skill: 20
+[2026-07-25 07:09:48,413] game: Move made: d4 (d2d4)
+[2026-07-25 07:09:48,445] game: Move made: d5 (d7d5)
+[2026-07-25 07:10:14,330] game: Move made: c4 (c2c4)
+[2026-07-25 07:10:14,362] game: Move made: dxc4 (d5c4)
+[2026-07-25 07:10:29,987] game: Move made: e4 (e2e4)
+[2026-07-25 07:10:30,011] game: Move made: e5 (e7e5)
+[2026-07-25 07:10:49,496] game: Move made: d5 (d4d5)
+[2026-07-25 07:10:49,528] game: Move made: Bb4+ (f8b4)
