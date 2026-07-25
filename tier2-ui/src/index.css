@@ -1,0 +1,16 @@
+/*
+ * The only global stylesheet in this codebase - everything else is inline
+ * styles driven by useTheme() (see theme.js). Kept to just this because
+ * :focus-visible has no inline-style equivalent, and consistent keyboard-
+ * focus indicators (board squares, move-history entries, buttons) matter
+ * for accessibility regardless of which theme is active.
+ */
+:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}

@@ -1,0 +1,67 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt pyinstaller
+
+      - name: Download Stockfish
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          Invoke-WebRequest -Uri 'https://github.com/official-stockfish/Stockfish/releases/latest/download/stockfish-windows-x86-64-avx2.zip' -OutFile stockfish.zip
+          Expand-Archive stockfish.zip -DestinationPath stockfish_extracted
+          New-Item -ItemType Directory -Force -Path C:\stockfish | Out-Null
+          Get-ChildItem -Recurse stockfish_extracted -Filter *.exe | Select-Object -First 1 | ForEach-Object {
+            Copy-Item $_.FullName C:\stockfish\stockfish.exe
+          }
+
+      - name: Install frontend dependencies
+        working-directory: tier2-ui
+        run: npm ci
+
+      - name: Run Python test suite
+        run: |
+          python test_tier1.py
+          python test_tier1_5.py
+          python test_game_engine.py
+          python test_api_server.py
+          python test_websocket.py
+
+      - name: Run frontend test suite
+        working-directory: tier2-ui
+        run: npm test -- --watchAll=false
+        env:
+          CI: true
+
+      - name: Build & package desktop app
+        working-directory: tier2-ui
+        run: npm run electron-build
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            tier2-ui/dist/*.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
